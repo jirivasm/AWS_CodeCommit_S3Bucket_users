@@ -1,9 +1,9 @@
 /* terraform { */
-  #This Backend has to be done after the s3 has been created
-  #This will be applyed after a Terraform init -reconfigure to save
-  #the state file on the bucket
-  
-  /* backend "s3"{
+#This Backend has to be done after the s3 has been created
+#This will be applyed after a Terraform init -reconfigure to save
+#the state file on the bucket
+
+/* backend "s3"{
     #Cant use the Var.name since they have not yet been created
     bucket  = "tfstate-s3-bucket-jirivasm"
     #Path
@@ -11,8 +11,8 @@
     region = "us-east-1" 
   } */
 /* } */
-provider "aws"{
-    region = var.region
+provider "aws" {
+  region = var.region
 }
 #creating the AWS CodeCommit repo
 resource "aws_codecommit_repository" "my-repo" {
@@ -33,14 +33,14 @@ resource "aws_codecommit_repository" "my-repo" {
 #You can delete the cloned code from your pc
 
 #Creating S3 bucket
-resource "aws_s3_bucket" "tfstateBucket"{
+resource "aws_s3_bucket" "tfstateBucket" {
   bucket = var.s3_bucket_name
-  
+
 }
 #Creating the versioning for the S3 Bucket
-resource "aws_s3_bucket_versioning" "tfstateBucket_versioning"{
-    bucket = aws_s3_bucket.tfstateBucket.bucket
-    versioning_configuration{
-        status = "Enabled"
-    }
+resource "aws_s3_bucket_versioning" "tfstateBucket_versioning" {
+  bucket = aws_s3_bucket.tfstateBucket.bucket
+  versioning_configuration {
+    status = "Enabled"
+  }
 }
