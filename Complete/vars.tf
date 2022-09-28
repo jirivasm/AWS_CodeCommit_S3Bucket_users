@@ -11,3 +11,7 @@ variable "repo_name" {
   default     = "my-repo"
   description = "AWS repository"
 }
+variable "users" {
+  type    = list(string)
+  default = ["jose", "ignacio", "rivas", "morales"]
+}

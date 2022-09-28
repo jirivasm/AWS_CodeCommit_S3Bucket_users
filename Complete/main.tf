@@ -11,14 +11,14 @@
     region = "us-east-1" 
   } */
 /* } */
-provider "aws" {
-  region = var.region
-}
+# provider "aws" {
+#   region = var.region
+# }
 #creating the AWS CodeCommit repo
-resource "aws_codecommit_repository" "my-repo" {
-  repository_name = var.repo_name
-  description     = "This is the Sample App Repository"
-}
+# resource "aws_codecommit_repository" "my-repo" {
+#   repository_name = var.repo_name
+#   description     = "This is the Sample App Repository"
+# }
 
 # To migrate from github to AWS CodeCommit
 # 1. Go To AIM and generate credentials for AWS codeCommit and save them
@@ -33,14 +33,14 @@ resource "aws_codecommit_repository" "my-repo" {
 #You can delete the cloned code from your pc
 
 #Creating S3 bucket
-resource "aws_s3_bucket" "tfstateBucket" {
-  bucket = var.s3_bucket_name
+# resource "aws_s3_bucket" "tfstateBucket" {
+#   bucket = var.s3_bucket_name
 
-}
-#Creating the versioning for the S3 Bucket
-resource "aws_s3_bucket_versioning" "tfstateBucket_versioning" {
-  bucket = aws_s3_bucket.tfstateBucket.bucket
-  versioning_configuration {
-    status = "Enabled"
-  }
-}
+# }
+# #Creating the versioning for the S3 Bucket
+# resource "aws_s3_bucket_versioning" "tfstateBucket_versioning" {
+#   bucket = aws_s3_bucket.tfstateBucket.bucket
+#   versioning_configuration {
+#     status = "Enabled"
+#   }
+# }
